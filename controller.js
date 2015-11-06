@@ -31,6 +31,14 @@ function hash(string)
 }
 
 
+function addNewline()
+{
+  var main = document.getElementById("main");
+  var newline = document.createElement("br");
+  main.appendChild(newline);
+}
+
+
 function selectStudent()
 {
   //if the whole class has been selected
@@ -120,7 +128,8 @@ function newClass()
   var classHash = hash(classInput.value);
 
   console.log(classHash);
-  document.cookie = classHash + "=" + classInput.value;
+  document.cookie = classHash + "=" + classInput.value +
+                    ";expires=Thu, 18 Dec 2020 12:00:00 UTC";
 
   //load it from cookies
   loadClass(classHash);
@@ -159,4 +168,20 @@ function start()
   main.appendChild(oldClassHeading);
 
   //add the old class things with delete buttons
+  var oldClasses = document.cookie.split("; ");
+
+  for (var i = 0;i < oldClasses.length;i++)
+  {
+    var classData = oldClasses[i].split("=");
+    var classLink = document.createElement("a");
+    classLink.innerHTML = classData[1];
+    classLink.onclick = function()
+    {
+      loadClass(classData[0]);
+    }
+    classLink.href = "#";
+    main.appendChild(classLink);
+
+    addNewline();
+  }
 }

@@ -18,18 +18,18 @@ function groupsOf(input,groupSize)
   var students = randomize(input);
   var output = [];
 
-  for (var i = 0;i < students.length;i += groupSize)
+  while (students.length > 0)
   {
     var group = [];
-    var studentIndex = i;
 
-    while (studentIndex < students.length && studentIndex < i + groupSize)
+    while (group.length < groupSize && students.length > 0)
     {
-      group.push(students[studentIndex]);
-      studentIndex++
+      group.push(students[0]);
+      students.splice(0,1);
     }
     output.push(group);
   }
+
   return output;
 }
 

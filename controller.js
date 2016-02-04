@@ -136,6 +136,12 @@ function newClass()
 }
 
 
+function reload()
+{
+	location.reload();
+}
+
+
 function start()
 {
   var main = document.getElementById("main");

@@ -1,3 +1,4 @@
+
 function randomize(input)
 {
   var students = input.concat([]);

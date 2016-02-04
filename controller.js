@@ -139,6 +139,7 @@ function newClass()
 function reload()
 {
 	location.reload();
+	Console.log("ye");
 }
 
 

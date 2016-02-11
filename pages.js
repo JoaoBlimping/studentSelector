@@ -1,9 +1,7 @@
 function reqListener()
 {
-	var parser = new DOMParser();
-	var doc = parser.parseFromString(this.responseText,"text/html");
-	document.body.innerHTML = doc.body.innerHTML;
-}
+	document.body.innerHTML = this.responseText
+};
 
 
 function loadPage(pageName)
@@ -16,4 +14,4 @@ function loadPage(pageName)
 	oReq.addEventListener("load",reqListener);
 	oReq.open("GET", "pages/"+pageName,true);
 	oReq.send();
-}
+};
